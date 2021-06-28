@@ -837,9 +837,9 @@ Wire Wire Line
 Wire Wire Line
 	7350 3800 7300 3800
 Connection ~ 7300 3800
-Text Label 6550 3800 0    50   ~ 0
-r_adc
 Text Label 6550 3900 0    50   ~ 0
+r_adc
+Text Label 6550 3800 0    50   ~ 0
 c_adc
 Text Label 6550 4000 0    50   ~ 0
 l_adc
@@ -862,11 +862,11 @@ F 3 "https://www.diodes.com/assets/Datasheets/DMG2301L.pdf" H 3950 1500 50  0001
 $EndComp
 Wire Wire Line
 	3950 1700 3950 1750
-Text Label 6550 3700 0    50   ~ 0
+Text Label 5150 3900 2    50   ~ 0
 lir_en
-Text Label 6550 3500 0    50   ~ 0
+Text Label 5150 3700 2    50   ~ 0
 lir_a
-Text Label 6550 3600 0    50   ~ 0
+Text Label 5150 3800 2    50   ~ 0
 lir_b
 $Sheet
 S 8100 2100 550  500 
@@ -906,18 +906,17 @@ Text Label 8100 2400 2    50   ~ 0
 lir_b
 Text Label 8100 2200 2    50   ~ 0
 lir_en
-NoConn ~ 5150 3600
-Text Label 5150 3700 2    50   ~ 0
-rir_a
-Text Label 5150 3800 2    50   ~ 0
-rir_b
-Text Label 5150 3900 2    50   ~ 0
-rir_en
-Text Label 5150 4000 2    50   ~ 0
-cir_a
 Text Label 5150 4100 2    50   ~ 0
-cir_b
+rir_a
+Text Label 5150 4000 2    50   ~ 0
+rir_b
 Text Label 5150 4200 2    50   ~ 0
+rir_en
+Text Label 5150 4300 2    50   ~ 0
+cir_a
+Text Label 5150 4500 2    50   ~ 0
+cir_b
+Text Label 5150 4400 2    50   ~ 0
 cir_en
 Text Label 9050 2200 2    50   ~ 0
 cir_en
@@ -950,9 +949,9 @@ F 3 "~" H 8450 3650 50  0001 C CNN
 	1    8450 3650
 	-1   0    0    1   
 $EndComp
-Text Label 8650 3850 0    59   ~ 0
+Text Label 8650 3850 0    50   ~ 0
 lmot_m1
-Text Label 8650 3350 0    59   ~ 0
+Text Label 8650 3350 0    50   ~ 0
 lmot_m2
 $Comp
 L power:GND #PWR030
@@ -969,9 +968,9 @@ Wire Wire Line
 	9100 3800 9100 3750
 Wire Wire Line
 	9100 3750 8650 3750
-Text Label 8650 3650 0    59   ~ 0
+Text Label 8650 3650 0    50   ~ 0
 lenc_a
-Text Label 8650 3550 0    59   ~ 0
+Text Label 8650 3550 0    50   ~ 0
 lenc_b
 $Comp
 L power:+3V3 #PWR029
@@ -999,9 +998,9 @@ F 3 "~" H 9600 3650 50  0001 C CNN
 	1    9600 3650
 	-1   0    0    1   
 $EndComp
-Text Label 9800 3850 0    59   ~ 0
+Text Label 9800 3850 0    50   ~ 0
 rmot_m1
-Text Label 9800 3350 0    59   ~ 0
+Text Label 9800 3350 0    50   ~ 0
 rmot_m2
 $Comp
 L power:GND #PWR034
@@ -1018,9 +1017,9 @@ Wire Wire Line
 	10250 3800 10250 3750
 Wire Wire Line
 	10250 3750 9800 3750
-Text Label 9800 3650 0    59   ~ 0
+Text Label 9800 3650 0    50   ~ 0
 renc_a
-Text Label 9800 3550 0    59   ~ 0
+Text Label 9800 3550 0    50   ~ 0
 renc_b
 $Comp
 L power:+3V3 #PWR033
@@ -1037,13 +1036,13 @@ Wire Wire Line
 	9800 3450 10250 3450
 Wire Wire Line
 	10250 3450 10250 3400
-Text Label 5150 4400 2    59   ~ 0
+Text Label 6550 3200 0    50   ~ 0
 lenc_b
-Text Label 5150 4300 2    59   ~ 0
+Text Label 6550 3100 0    50   ~ 0
 lenc_a
-Text Label 5150 4500 2    59   ~ 0
+Text Label 6550 3300 0    50   ~ 0
 renc_a
-Text Label 5150 4600 2    59   ~ 0
+Text Label 6550 3400 0    50   ~ 0
 renc_b
 $Comp
 L Connector_Generic:Conn_01x06 J4
@@ -1069,21 +1068,17 @@ F 3 "~" H 10200 4900 50  0001 C CNN
 	1    10200 4900
 	1    0    0    -1  
 $EndComp
-Text Label 6550 3400 0    59   ~ 0
-lmot_in1
-Text Label 6550 3300 0    59   ~ 0
-lmot_in2
-Text Label 6550 3200 0    59   ~ 0
+Text Label 6550 3600 0    50   ~ 0
 rmot_in1
-Text Label 6550 3100 0    59   ~ 0
+Text Label 6550 3500 0    50   ~ 0
 rmot_in2
-Text Label 8650 4700 0    59   ~ 0
+Text Label 8650 4700 0    50   ~ 0
 rmot_in2
-Text Label 8650 4800 0    59   ~ 0
+Text Label 8650 4800 0    50   ~ 0
 rmot_in1
-Text Label 8650 5100 0    59   ~ 0
+Text Label 8650 5100 0    50   ~ 0
 lmot_in2
-Text Label 8650 5200 0    59   ~ 0
+Text Label 8650 5200 0    50   ~ 0
 lmot_in1
 $Comp
 L power:GND #PWR031
@@ -1117,12 +1112,28 @@ Wire Wire Line
 	9150 4900 8650 4900
 NoConn ~ 10000 4700
 NoConn ~ 10000 5200
-Text Label 10000 4800 2    59   ~ 0
+Text Label 10000 4900 2    50   ~ 0
 lmot_m2
-Text Label 10000 4900 2    59   ~ 0
+Text Label 10000 4800 2    50   ~ 0
 lmot_m1
-Text Label 10000 5000 2    59   ~ 0
+Text Label 10000 5100 2    50   ~ 0
 rmot_m2
-Text Label 10000 5100 2    59   ~ 0
+Text Label 10000 5000 2    50   ~ 0
 rmot_m1
+Text Label 6550 3700 0    50   ~ 0
+lmot_in2
+Text Label 5150 3600 2    50   ~ 0
+lmot_in1
+NoConn ~ 5150 4600
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 6114E9A8
+P 5850 6800
+F 0 "H1" H 5950 6846 50  0000 L CNN
+F 1 "MountingHole" H 5950 6755 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_Pad_TopBottom" H 5850 6800 50  0001 C CNN
+F 3 "~" H 5850 6800 50  0001 C CNN
+	1    5850 6800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
