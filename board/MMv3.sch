@@ -316,17 +316,6 @@ but
 Wire Wire Line
 	2850 2650 2850 2700
 $Comp
-L Connector_Generic:Conn_02x05_Top_Bottom J2
-U 1 1 60DCD52C
-P 3950 2950
-F 0 "J2" H 4000 3367 50  0000 C CNN
-F 1 "SWD" H 4000 3276 50  0000 C CNN
-F 2 "Connector:Tag-Connect_TC2050-IDC-NL_2x05_P1.27mm_Vertical" H 3950 2950 50  0001 C CNN
-F 3 "~" H 3950 2950 50  0001 C CNN
-	1    3950 2950
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+3V3 #PWR019
 U 1 1 60DCE3A2
 P 3700 2700
@@ -1134,6 +1123,17 @@ F 1 "MountingHole" H 5950 6755 50  0000 L CNN
 F 2 "MountingHole:MountingHole_3.2mm_M3_Pad_TopBottom" H 5850 6800 50  0001 C CNN
 F 3 "~" H 5850 6800 50  0001 C CNN
 	1    5850 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_02x05_Counter_Clockwise J2
+U 1 1 60DA203B
+P 3950 2950
+F 0 "J2" H 4000 3367 50  0000 C CNN
+F 1 "SWD" H 4000 3276 50  0000 C CNN
+F 2 "Connector:Tag-Connect_TC2050-IDC-NL_2x05_P1.27mm_Vertical" H 3950 2950 50  0001 C CNN
+F 3 "~" H 3950 2950 50  0001 C CNN
+	1    3950 2950
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
