@@ -25,12 +25,20 @@ cir = IRSensor(13, 12, 14, 26)
 rir = IRSensor(11, 10, 9, 27)
 
 # encoders
-lenc = Encoder(16, 17)
+lenc = Encoder(16, 17, invert=True)
 renc = Encoder(18, 19)
 
 # motors
 lmot = Motor(15, 22)
-rmot = Motor(21, 20)
+rmot = Motor(21, 20, invert=True)
 
 """ Main """
 machine.Pin(5, machine.Pin.IN) # temp workaround for rev 1
+
+while True:
+	delta = lenc.read() - renc.read()
+	u = 30*delta
+	lmot.write(10000-u)
+	rmot.write(10000+u)
+	print(delta)
+	time.sleep(0.05)

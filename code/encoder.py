@@ -1,7 +1,9 @@
 import machine
 
 class Encoder():
-	def __init__(self, a, b):
+	def __init__(self, a, b, invert=False):
+		if invert:
+			a, b = b, a
 		self.a = machine.Pin(a, machine.Pin.IN)
 		self.b = machine.Pin(b, machine.Pin.IN)
 
