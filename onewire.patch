@@ -1,0 +1,53 @@
+diff --git a/extmod/modonewire.c b/extmod/modonewire.c
+index 6abe3dfad..81318f6b5 100644
+--- a/extmod/modonewire.c
++++ b/extmod/modonewire.c
+@@ -33,15 +33,15 @@
+ /******************************************************************************/
+ // Low-level 1-Wire routines
+ 
+-#define TIMING_RESET1 (480)
+-#define TIMING_RESET2 (70)
+-#define TIMING_RESET3 (410)
++#define TIMING_RESET1 (70)
++#define TIMING_RESET2 (9)
++#define TIMING_RESET3 (40)
+ #define TIMING_READ1 (5)
+ #define TIMING_READ2 (5)
+-#define TIMING_READ3 (40)
+-#define TIMING_WRITE1 (10)
+-#define TIMING_WRITE2 (50)
+-#define TIMING_WRITE3 (10)
++#define TIMING_READ3 (9)
++#define TIMING_WRITE1 (1)
++#define TIMING_WRITE2 (8)
++#define TIMING_WRITE3 (3)
+ 
+ STATIC int onewire_bus_reset(mp_hal_pin_obj_t pin) {
+     mp_hal_pin_od_low(pin);
+@@ -59,9 +59,9 @@ STATIC int onewire_bus_readbit(mp_hal_pin_obj_t pin) {
+     mp_hal_pin_od_high(pin);
+     uint32_t i = mp_hal_quiet_timing_enter();
+     mp_hal_pin_od_low(pin);
+-    mp_hal_delay_us_fast(TIMING_READ1);
++    asm volatile("nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop");
+     mp_hal_pin_od_high(pin);
+-    mp_hal_delay_us_fast(TIMING_READ2);
++    asm volatile("nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop");
+     int value = mp_hal_pin_read(pin);
+     mp_hal_quiet_timing_exit(i);
+     mp_hal_delay_us_fast(TIMING_READ3);
+@@ -71,11 +71,11 @@ STATIC int onewire_bus_readbit(mp_hal_pin_obj_t pin) {
+ STATIC void onewire_bus_writebit(mp_hal_pin_obj_t pin, int value) {
+     uint32_t i = mp_hal_quiet_timing_enter();
+     mp_hal_pin_od_low(pin);
+-    mp_hal_delay_us_fast(TIMING_WRITE1);
++    busy_wait_us_32(TIMING_WRITE1);
+     if (value) {
+         mp_hal_pin_od_high(pin);
+     }
+-    mp_hal_delay_us_fast(TIMING_WRITE2);
++    busy_wait_us_32(TIMING_WRITE2);
+     mp_hal_pin_od_high(pin);
+     mp_hal_delay_us_fast(TIMING_WRITE3);
+     mp_hal_quiet_timing_exit(i);

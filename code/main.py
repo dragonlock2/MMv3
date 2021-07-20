@@ -6,6 +6,7 @@ from neopixel import led_rgb
 from irsensor import IRSensor
 from encoder  import Encoder
 from motor    import Motor
+from ds28e05  import DS28E05
 
 """ Pins """
 
@@ -16,7 +17,7 @@ led_rgb(1, 1, 1)
 
 # extra stuffs
 i2c = machine.I2C(1, sda=machine.Pin(2), scl=machine.Pin(3)) # LSM9DS1
-ow = onewire.OneWire(machine.Pin(4)) # DS28E05
+eeprom = DS28E05(4)
 
 # IR sensors
 lir = IRSensor(8, 6, 7, 28)
