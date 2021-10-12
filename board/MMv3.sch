@@ -786,38 +786,29 @@ NoConn ~ 1950 2150
 $Comp
 L Connector_Generic:Conn_01x02 J1
 U 1 1 616D21AD
-P 1150 1700
-F 0 "J1" H 1068 1375 50  0000 C CNN
-F 1 "9V" H 1068 1466 50  0000 C CNN
-F 2 "extraparts:Keystone_593_594" H 1150 1700 50  0001 C CNN
-F 3 "~" H 1150 1700 50  0001 C CNN
-	1    1150 1700
-	-1   0    0    1   
+P 1150 1750
+F 0 "J1" H 1068 1425 50  0000 C CNN
+F 1 "9V" H 1068 1516 50  0000 C CNN
+F 2 "extraparts:Keystone_593_594" H 1150 1750 50  0001 C CNN
+F 3 "~" H 1150 1750 50  0001 C CNN
+	1    1150 1750
+	-1   0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR05
 U 1 1 616E07BD
-P 1400 1750
-F 0 "#PWR05" H 1400 1500 50  0001 C CNN
-F 1 "GND" H 1405 1577 50  0000 C CNN
-F 2 "" H 1400 1750 50  0001 C CNN
-F 3 "" H 1400 1750 50  0001 C CNN
-	1    1400 1750
+P 1400 1900
+F 0 "#PWR05" H 1400 1650 50  0001 C CNN
+F 1 "GND" H 1405 1727 50  0000 C CNN
+F 2 "" H 1400 1900 50  0001 C CNN
+F 3 "" H 1400 1900 50  0001 C CNN
+	1    1400 1900
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1350 1700 1400 1700
-Wire Wire Line
-	1400 1700 1400 1750
-Text Notes 950  1700 0    50   ~ 0
+Text Notes 950  1850 0    50   ~ 0
 9V
 Wire Wire Line
-	1550 1750 1550 1600
-Wire Wire Line
-	1550 1600 1350 1600
-Wire Wire Line
 	1550 2050 1550 1750
-Connection ~ 1550 1750
 $Comp
 L Mechanical:MountingHole H2
 U 1 1 617B1C1E
@@ -952,4 +943,35 @@ NoConn ~ 5150 4800
 NoConn ~ 5150 4900
 NoConn ~ 5150 3200
 NoConn ~ 5150 3100
+Wire Wire Line
+	1350 1750 1550 1750
+Connection ~ 1550 1750
+Wire Wire Line
+	1400 1900 1400 1850
+Wire Wire Line
+	1400 1850 1350 1850
+$Comp
+L Mechanical:MountingHole H5
+U 1 1 616ABC55
+P 2300 6450
+F 0 "H5" H 2400 6496 50  0000 L CNN
+F 1 "bac logo" H 2400 6405 50  0000 L CNN
+F 2 "extraparts:bac_logo" H 2300 6450 50  0001 C CNN
+F 3 "~" H 2300 6450 50  0001 C CNN
+	1    2300 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H6
+U 1 1 616ABE70
+P 3100 6450
+F 0 "H6" H 3200 6496 50  0000 L CNN
+F 1 "ieee logo" H 3200 6405 50  0000 L CNN
+F 2 "extraparts:ieee_logo" H 3100 6450 50  0001 C CNN
+F 3 "~" H 3100 6450 50  0001 C CNN
+	1    3100 6450
+	1    0    0    -1  
+$EndComp
+Text Notes 3400 1350 0    50   ~ 0
+most PMOS should work
 $EndSCHEMATC
