@@ -17,7 +17,7 @@ def ws2812():
     nop()                   .side(0)    [T2 - 1]
     wrap()
 
-sm = rp2.StateMachine(0, ws2812, freq=8_000_000, sideset_base=machine.Pin(1))
+sm = rp2.StateMachine(0, ws2812, freq=8_000_000, sideset_base=machine.Pin(4))
 sm.active(1)
 ar = array.array("I", [0])
 
