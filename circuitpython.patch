@@ -1,5 +1,5 @@
 diff --git a/shared-module/onewireio/OneWire.c b/shared-module/onewireio/OneWire.c
-index aeb4dcb00..53ff93c85 100644
+index aeb4dcb00..35e28c2e9 100644
 --- a/shared-module/onewireio/OneWire.c
 +++ b/shared-module/onewireio/OneWire.c
 @@ -28,6 +28,7 @@
@@ -39,25 +39,22 @@ index aeb4dcb00..53ff93c85 100644
 +    asm volatile("nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop");
      bool value = common_hal_digitalio_digitalinout_get_value(&self->pin);
 -    common_hal_mcu_delay_us(55);
-+    common_hal_mcu_delay_us(12);
++    common_hal_mcu_delay_us(9);
      common_hal_mcu_enable_interrupts();
      return value;
  }
-@@ -82,8 +83,14 @@ void common_hal_onewireio_onewire_write_bit(onewireio_onewire_obj_t *self,
+@@ -82,8 +83,12 @@ void common_hal_onewireio_onewire_write_bit(onewireio_onewire_obj_t *self,
      bool bit) {
      common_hal_mcu_disable_interrupts();
      common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
 -    common_hal_mcu_delay_us(bit? 6 : 60);
--    common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
--    common_hal_mcu_delay_us(bit? 64 : 10);
++    busy_wait_us_32(1);
 +    if (bit) {
-+        busy_wait_us_32(1);
 +        common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
-+        busy_wait_us_32(14);
-+    } else{
-+        busy_wait_us_32(10);
-+        common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
-+        busy_wait_us_32(5);
 +    }
++    busy_wait_us_32(8);
+     common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
+-    common_hal_mcu_delay_us(bit? 64 : 10);
++    busy_wait_us_32(3);
      common_hal_mcu_enable_interrupts();
  }
