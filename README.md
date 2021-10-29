@@ -29,3 +29,4 @@ The DS28E05 1-Wire EEPROM used on the MMv3.1 and before operates at overdrive sp
 ## Known Issues
 
 * circuitpython.patch does not result in perfect timing for the 1-Wire bus (86% accuracy in detecting the EEPROM). Fixing will take fine tuning timings with an oscilloscope. micropython.patch works perfectly as it was developed with an oscilloscope.
+* DS28E05 library doesn't work with CircuitPython but did under MicroPython. Likely because bit timings aren't yet perfect.
