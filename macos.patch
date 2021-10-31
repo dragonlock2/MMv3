@@ -1,0 +1,13 @@
+diff --git a/py/mkrules.mk b/py/mkrules.mk
+index b121260c0..bbc15d7d2 100644
+--- a/py/mkrules.mk
++++ b/py/mkrules.mk
+@@ -187,7 +187,7 @@ $(PROG): $(OBJ)
+ ifdef STRIP_CIRCUITPYTHON
+ 	$(Q)$(STRIP) $(STRIPFLAGS_EXTRA) $@
+ endif
+-	$(Q)$(SIZE) $$(find $(BUILD) -path "$(BUILD)/build/frozen*.o") $@
++	size $$(find $(BUILD) -path "$(BUILD)/build/frozen*.o") $@
+ 
+ clean: clean-prog
+ clean-prog:

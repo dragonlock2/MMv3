@@ -23,6 +23,7 @@ The DS28E05 1-Wire EEPROM used on the MMv3.1 and before operates at overdrive sp
 1. Follow these [instructions](https://learn.adafruit.com/building-circuitpython/introduction) to get your system set up for compilation.
 2. Follow these [instructions](https://learn.adafruit.com/building-circuitpython/build-circuitpython) to clone CircuitPython and do further setup but don't compile CircuitPython just yet.
 3. Apply [circuitpython.patch](circuitpython.patch) using `patch -p1 < circuitpython.patch`
+	* Also apply [macos.patch](macos.patch) if using MacOS.
 4. Compile CircuitPython with `cd ports/raspberrypi && make  BOARD=raspberry_pi_pico`
 5. Upload the resulting firmware.uf2!
 
