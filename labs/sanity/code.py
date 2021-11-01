@@ -68,6 +68,10 @@ if __name__ == "__main__":
 		print("Detected the following 1-Wire devices...")
 		for d in eeprom.devices:
 			print("\t", "".join("{:02x}".format(x) for x in d.rom))
+
+		eeprom.write(0, 0, b'MMv3.1')
+		if not eeprom.read(0, 0, 6) == b'MMv3.1':
+			print("FAIL! EEPROM write mismatch!")
 	else:
 		print("FAIL! No 1-Wire devices detected!")
 
