@@ -1,60 +1,85 @@
 diff --git a/shared-module/onewireio/OneWire.c b/shared-module/onewireio/OneWire.c
-index aeb4dcb00..35e28c2e9 100644
+index aeb4dcb00..162321859 100644
 --- a/shared-module/onewireio/OneWire.c
 +++ b/shared-module/onewireio/OneWire.c
-@@ -28,6 +28,7 @@
- #include "shared-bindings/onewireio/OneWire.h"
+@@ -29,12 +29,17 @@
  #include "shared-bindings/microcontroller/__init__.h"
  #include "shared-bindings/digitalio/DigitalInOut.h"
-+#include "ports/raspberrypi/sdk/src/rp2_common/hardware_timer/include/hardware/timer.h"
  
++#include "ports/raspberrypi/sdk/src/rp2_common/hardware_timer/include/hardware/timer.h"
++#include "ports/raspberrypi/sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h"
++
  // Durations are taken from here: https://www.maximintegrated.com/en/app-notes/index.mvp/id/126
  
-@@ -54,11 +55,11 @@ void common_hal_onewireio_onewire_deinit(onewireio_onewire_obj_t *self) {
+ void common_hal_onewireio_onewire_construct(onewireio_onewire_obj_t *self,
+     const mcu_pin_obj_t *pin) {
+     self->pin.base.type = &digitalio_digitalinout_type;
+     common_hal_digitalio_digitalinout_construct(&self->pin, pin);
++    common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
++    gpio_set_dir(self->pin.pin->number, GPIO_IN); // od high
+ }
+ 
+ bool common_hal_onewireio_onewire_deinited(onewireio_onewire_obj_t *self) {
+@@ -52,38 +57,43 @@ void common_hal_onewireio_onewire_deinit(onewireio_onewire_obj_t *self) {
+ // to do accurate timekeeping, since we disable interrupts during the delays below.
+ 
  bool common_hal_onewireio_onewire_reset(onewireio_onewire_obj_t *self) {
++    const uint8_t pin = self->pin.pin->number;
++    gpio_set_dir(pin, GPIO_OUT); // od low
++    busy_wait_us_32(70);
      common_hal_mcu_disable_interrupts();
-     common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
+-    common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
 -    common_hal_mcu_delay_us(480);
 -    common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
-     common_hal_mcu_delay_us(70);
-+    common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
-+    common_hal_mcu_delay_us(9);
-     bool value = common_hal_digitalio_digitalinout_get_value(&self->pin);
+-    common_hal_mcu_delay_us(70);
+-    bool value = common_hal_digitalio_digitalinout_get_value(&self->pin);
 -    common_hal_mcu_delay_us(410);
-+    common_hal_mcu_delay_us(40);
++    gpio_set_dir(pin, GPIO_IN); // od high
++    busy_wait_us_32(9);
++    bool value = gpio_get(pin);
      common_hal_mcu_enable_interrupts();
++    busy_wait_us_32(40);
      return value;
  }
-@@ -66,14 +67,14 @@ bool common_hal_onewireio_onewire_reset(onewireio_onewire_obj_t *self) {
+ 
  bool common_hal_onewireio_onewire_read_bit(onewireio_onewire_obj_t *self) {
++    const uint8_t pin = self->pin.pin->number;
++    gpio_set_dir(pin, GPIO_IN); // od high
      common_hal_mcu_disable_interrupts();
-     common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
+-    common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
 -    common_hal_mcu_delay_us(6);
-+    asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
-     common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
-     // TODO(tannewt): Test with more devices and maybe make the delays
-     // configurable. This should be 9 by the datasheet but all bits read as 1
-     // then.
+-    common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
+-    // TODO(tannewt): Test with more devices and maybe make the delays
+-    // configurable. This should be 9 by the datasheet but all bits read as 1
+-    // then.
 -    common_hal_mcu_delay_us(6);
-+    asm volatile("nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop");
-     bool value = common_hal_digitalio_digitalinout_get_value(&self->pin);
+-    bool value = common_hal_digitalio_digitalinout_get_value(&self->pin);
 -    common_hal_mcu_delay_us(55);
-+    common_hal_mcu_delay_us(9);
++    gpio_set_dir(pin, GPIO_OUT); // od low
++    // this generates a 0.75us delay...
++    gpio_set_dir(pin, GPIO_IN); // od high
++    asm volatile("nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop");
++    bool value = gpio_get(pin);
      common_hal_mcu_enable_interrupts();
++    busy_wait_us_32(9);
      return value;
  }
-@@ -82,8 +83,12 @@ void common_hal_onewireio_onewire_write_bit(onewireio_onewire_obj_t *self,
+ 
+ void common_hal_onewireio_onewire_write_bit(onewireio_onewire_obj_t *self,
      bool bit) {
++    const uint8_t pin = self->pin.pin->number;
      common_hal_mcu_disable_interrupts();
-     common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
+-    common_hal_digitalio_digitalinout_switch_to_output(&self->pin, false, DRIVE_MODE_OPEN_DRAIN);
 -    common_hal_mcu_delay_us(bit? 6 : 60);
-+    busy_wait_us_32(1);
-+    if (bit) {
-+        common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
-+    }
-+    busy_wait_us_32(8);
-     common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
+-    common_hal_digitalio_digitalinout_switch_to_input(&self->pin, PULL_NONE);
 -    common_hal_mcu_delay_us(bit? 64 : 10);
++    gpio_set_dir(pin, GPIO_OUT); // od low
++    // this generates a 0.75us delay...
++    if (bit) {
++        gpio_set_dir(pin, GPIO_IN); // od high
++    }
++    busy_wait_us_32(6);
++    gpio_set_dir(pin, GPIO_IN); // od high
 +    busy_wait_us_32(3);
      common_hal_mcu_enable_interrupts();
  }
