@@ -1,4 +1,4 @@
-update=Tuesday, October 12, 2021 at 10:56:42 AM
+update=Friday, December 03, 2021 at 01:02:11 AM
 version=1
 last_client=kicad
 [general]
@@ -237,6 +237,17 @@ dPairWidth=0.2
 dPairGap=0.25
 dPairViaGap=0.25
 [pcbnew/Netclasses/1]
+Name=BigPower
+Clearance=0.2
+TrackWidth=0.64
+ViaDiameter=1.2
+ViaDrill=0.6
+uViaDiameter=0.3
+uViaDrill=0.1
+dPairWidth=0.2
+dPairGap=0.25
+dPairViaGap=0.25
+[pcbnew/Netclasses/2]
 Name=Power
 Clearance=0.2
 TrackWidth=0.32
