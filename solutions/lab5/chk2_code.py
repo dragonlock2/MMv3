@@ -46,7 +46,7 @@ rmot.decay_mode = motor.SLOW_DECAY
 
 """ Main """
 
-def constr_mot(val, min_val, max_val):
+def constrain(val, min_val, max_val):
     return min(max_val, max(val, min_val))
 
 if __name__ == "__main__":
@@ -71,11 +71,11 @@ if __name__ == "__main__":
         dist_target = 200
 
         e_lin = dist_target - dist
-        u_lin = constr_mot(Kp_lin * e_lin, -0.3, 0.3) # 0.9 is a bit too fast
+        u_lin = constrain(Kp_lin * e_lin, -0.3, 0.3) # 0.9 is a bit too fast
 
         # combine
-        lmot.throttle = constr_mot(u_lin - u_ang, -1, 1)
-        rmot.throttle = constr_mot(u_lin + u_ang, -1, 1)
+        lmot.throttle = constrain(u_lin - u_ang, -1, 1)
+        rmot.throttle = constrain(u_lin + u_ang, -1, 1)
 
         print(e_ang, e_lin)
 

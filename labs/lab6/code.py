@@ -46,28 +46,31 @@ rmot.decay_mode = motor.SLOW_DECAY
 
 """ Main """
 
-def constrain(val):
-    return min(1, max(val, -1))
+def constrain(val, min_val, max_val):
+    return min(max_val, max(val, min_val))
+
+# compute dist and theta
+def compute_odometry():
+    return """TODO"""
+
+# compute correction and error terms for a target theta
+def compute_u_ang(theta, theta_target):
+    return """TODO"""
+
+# compute correction and error terms for a target distance
+def compute_u_lin(dist, dist_target):
+    return """TODO"""
+
+def run_control_loop(theta_target, dist_target):
+    dist, theta = compute_odometry()
+    u_ang, e_ang = compute_u_ang(theta, theta_target)
+    u_lin, e_lin = compute_u_lin(dist, dist_target)
+    lmot.throttle = constrain(u_lin - u_ang, -1, 1)
+    rmot.throttle = constrain(u_lin + u_ang, -1, 1)
+    return e_ang, e_lin
 
 if __name__ == "__main__":
-    MM_PER_TICK = pi * WHEEL_DIAMETER / ENCODER_TICKS_PER_REVOLUTION
-
     while True:
-        left_dist  = lenc.position * MM_PER_TICK
-        right_dist = renc.position * MM_PER_TICK
-
-        dist  = (left_dist + right_dist) / 2
-        theta = (right_dist - left_dist) / WHEELBASE_DIAMETER
-
-        Kp_ang = 0.1
-        theta_target = 0
-
-        e_ang = theta_target - theta
-        u_ang = Kp_ang * e_ang
-
-        lmot.throttle = constrain(0.2 - u_ang)
-        rmot.throttle = constrain(0.2 + u_ang)
-
-        print(e_ang)
-
-        time.sleep(0.05)
+        e_ang, e_lin = run_control_loop(0, 200)
+        print(e_ang, e_lin)
+        time.sleep(0.02) # ~50Hz loop
