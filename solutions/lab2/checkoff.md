@@ -23,6 +23,7 @@ position = 0
 a_prev = a.value
 
 def leftEncoderRisingEdge():
+    global position # access global position
     position += 1 if b.value else -1
 
 while True:

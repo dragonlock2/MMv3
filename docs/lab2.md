@@ -59,6 +59,7 @@ position = 0
 a_prev = a.value
 
 def leftEncoderRisingEdge():
+    global position # access global position
     """TODO increment or decrement position"""
 
 while True:
