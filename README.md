@@ -15,10 +15,13 @@ MMv3 is the 3rd generation robot platform used to teach the IEEE Micromouse DeCa
 
 Skeleton lab code, lab documents, and solutions are stored in [labs/](labs/), [docs/](docs/), and [solutions/](solutions/), respectively. To get started with a lab, simply copy the contents of the folder over to the CircuitPython drive and edit files from there.
 
-* [sanity](docs/sanity.md) - hardware check
-* [lab1](docs/lab1.md) - assembly instructions and CircuitPython basics
-* [lab2](docs/lab2.md) - encoders
-* [lab3](docs/lab3.md) - IR sensors
+* [sanity](docs/sanity.md) - Hardware Check
+* [lab1](docs/lab1.md) - Assembly and CircuitPython Basics
+* [lab2](docs/lab2.md) - Encoders
+* [lab3](docs/lab3.md) - IR Sensors
+* [lab4](docs/lab4.md) - Odometry and Motor Control
+* [lab5](docs/lab5.md) - Intro to PID
+* [lab6](docs/lab6.md) - More PID
 
 ## Compiling CircuitPython
 

@@ -10,6 +10,12 @@ TODO check that a reverse bias detector actually works better in terms of linear
 
 ## Read One Sensor (WIP)
 
+### Checkoff #1
+
 ## Read All the Sensors (WIP)
 
+### Checkoff #2
+
 ## Calibration (WIP)
+
+### Checkoff #3

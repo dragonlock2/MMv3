@@ -1,4 +1,4 @@
-# Lab 1: CircuitPython Basics
+# Lab 1: Assembly and CircuitPython Basics
 
 ## Assembly (WIP)
 
