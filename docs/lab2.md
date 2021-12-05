@@ -11,11 +11,9 @@ When we're navigating the maze, we'd like to keep track of a couple things.
 To answer these questions, we'll use the **quadrature encoder** sensors mounted on the back of your motors. They consist of a spinning magnet and two Hall effect sensors mounted 90° apart. Hall effect sensors measure the presence of magnetic fields. In our case, they output a `True` when closer to a north pole and `False` when closer to a south pole.
 
 <p align="center">
-    <figure>
-        <img height="300px" src="imgs/quadrature_encoder.gif" />
-        <br>
-        <figcaption align="center"><b>Hall sensor signal (y-axis) vs. time (x-axis)</b></figcaption>
-    </figure>
+    <img height="300px" src="imgs/quadrature_encoder.gif"/>
+    <br>
+    <a><b>Hall sensor signal (y-axis) vs. time (x-axis)</b></a>
 </p>
 
 ## Waveform Viewing
