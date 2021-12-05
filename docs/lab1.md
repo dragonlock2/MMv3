@@ -1,4 +1,4 @@
-# Lab 1
+# Lab 1: CircuitPython Basics
 
 ## Assembly (WIP)
 
@@ -23,7 +23,7 @@ Now that your mouse is assembled, it is time to run a sanity check to make sure 
 
 One of the most convenient features of CircuitPython is the ability to upload and modify code as if they were just files on a flash drive. Instead of editing code directly on the drive, we highly recommend editing code locally on your computer first and then copying it over to the drive to run. This reduces wear on the flash memory and ensures you have a local backup of your code.
 
-On startup, CircuitPython looks for a file named `code.py` and runs it. There are a few differences, but for the most part it behaves just like normal Python. After uploading new code, you'll need to bring up a serial monitor and press CTRL-C and CTRL-D to reload.
+On startup, CircuitPython looks for a file named `code.py` and runs it. There are a few differences, but for the most part it behaves just like normal Python. After uploading new code, you might need to bring up a serial monitor and press CTRL-C and CTRL-D to reload.
 
 For debugging, the serial monitor is invaluable. This is where the output of `print` statements will go. You can even bring up a REPL. One important note is that you can't start an interactive session (e.g. `python -i code.py`) to further debug your code as CircuitPython will restart on entering one.
 
@@ -48,7 +48,7 @@ rgb = neopixel.NeoPixel(board.GP4, 1)
 
 # blink
 while True:
-    rgb[0] = (255, 255, 255)
+    rgb[0] = (255, 255, 255) # max brightness
     led.value = True
     time.sleep(0.5)
     rgb[0] = (0, 0, 0)

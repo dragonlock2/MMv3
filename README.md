@@ -17,6 +17,7 @@ Skeleton lab code, lab documents, and solutions are stored in [labs/](labs/), [d
 
 * [sanity](docs/sanity.md) - hardware check
 * [lab1](docs/lab1.md) - assembly instructions and CircuitPython basics
+* [lab2](docs/lab2.md) - encoders
 
 ## Compiling CircuitPython
 
