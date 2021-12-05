@@ -5,10 +5,11 @@ import supervisor
 import digitalio
 import neopixel
 import rotaryio
+import pwmio
 
 from ds28e05  import DS28E05
 from irsensor import IRSensors
-from motor    import Motor
+import adafruit_motor.motor as motor
 
 supervisor.disable_autoreload()
 
@@ -38,8 +39,16 @@ lenc = rotaryio.IncrementalEncoder(board.GP12, board.GP13)
 renc = rotaryio.IncrementalEncoder(board.GP19, board.GP18)
 
 # motors
-lmot = Motor(board.GP16, board.GP17)
-rmot = Motor(board.GP15, board.GP14)
+lmot = motor.DCMotor(
+    pwmio.PWMOut(board.GP16, frequency=20000),
+    pwmio.PWMOut(board.GP17, frequency=20000)
+)
+rmot = motor.DCMotor(
+    pwmio.PWMOut(board.GP15, frequency=20000),
+    pwmio.PWMOut(board.GP14, frequency=20000)
+)
+lmot.decay_mode = motor.SLOW_DECAY
+rmot.decay_mode = motor.SLOW_DECAY
 
 """ Main """
 
@@ -115,36 +124,36 @@ if __name__ == "__main__":
         pass
 
     print("Full speed forward")
-    lmot.write(65535)
-    rmot.write(65535)
+    lmot.throttle = 1
+    rmot.throttle = 1
     time.sleep(0.5)
     print("Brake")
-    lmot.write(0)
-    rmot.write(0)
+    lmot.throttle = 0
+    rmot.throttle = 0
     time.sleep(0.5)
     print("Full speed backward")
-    lmot.write(-65535)
-    rmot.write(-65535)
+    lmot.throttle = -1
+    rmot.throttle = -1
     time.sleep(0.5)
     print("Brake")
-    lmot.write(0)
-    rmot.write(0)
+    lmot.throttle = 0
+    rmot.throttle = 0
     time.sleep(0.5)
     print("Low speed forward")
-    lmot.write(10000)
-    rmot.write(10000)
+    lmot.throttle = 0.25
+    rmot.throttle = 0.25
     time.sleep(0.5)
     print("Brake")
-    lmot.write(0)
-    rmot.write(0)
+    lmot.throttle = 0
+    rmot.throttle = 0
     time.sleep(0.5)
     print("Low speed backward")
-    lmot.write(-10000)
-    rmot.write(-10000)
+    lmot.throttle = -0.25
+    rmot.throttle = -0.25
     time.sleep(0.5)
     print("Brake")
-    lmot.write(0)
-    rmot.write(0)
+    lmot.throttle = 0
+    rmot.throttle = 0
     time.sleep(0.5)
 
     print("Done with tests!")
@@ -152,8 +161,8 @@ if __name__ == "__main__":
     print("Just gonna drive straight now :P")
     while True:
         delta = lenc.position - renc.position
-        u = 30*delta
-        lmot.write(10000-u)
-        rmot.write(10000+u)
+        u = 0.001 * delta
+        lmot.throttle = 0.25 - u
+        rmot.throttle = 0.25 + u
         print(delta)
         time.sleep(0.05)

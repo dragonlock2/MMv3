@@ -8,18 +8,14 @@ Use the latest `ibom.html`.
 
 Now that your mouse is assembled, it is time to run a sanity check to make sure everything is working.
 
-1. Plug your mouse into your computer and upload the latest **firmware.uf2** (see [releases](https://github.com/dragonlock2/MMv3/releases)) by dragging it into the drive named `RPI-RP2` that shows up. It should disappear and reappear as a drive named `CIRCUITPY`.
-    * If you've uploaded firmware before, you'll need to hold the `BOOTSEL` button on the Pi Pico while plugging in.
-2. Download the latest CircuitPython [libraries](https://circuitpython.org/libraries) (for Version 7.x) and upload the following ones to the lib/ folder on your mouse.
-    * adafruit_onewire/
-    * neopixel.mpy
+1. Follow the [setup](../README.md) instructions to get the firmware and libraries uploaded.
 3. Follow the [sanity lab](sanity.md) to run the sanity check.
 
 ### Checkoff #1
 
 1. Show your mentor your assembled mouse and passing sanity check.
 
-## CircuitPython Basics (WIP)
+## CircuitPython Basics
 
 One of the most convenient features of CircuitPython is the ability to upload and modify code as if they were just files on a flash drive. Instead of editing code directly on the drive, we highly recommend editing code locally on your computer first and then copying it over to the drive to run. This reduces wear on the flash memory and ensures you have a local backup of your code.
 
