@@ -4,6 +4,8 @@
 
 Use the latest `ibom.html`.
 
+Angle the IR sensors very slightly upward. Also place them on top.
+
 ## Sanity Check
 
 Now that your mouse is assembled, it is time to run a sanity check to make sure everything is working.

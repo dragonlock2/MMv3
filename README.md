@@ -26,7 +26,7 @@ Skeleton lab code, lab documents, and solutions are stored in [labs/](labs/), [d
 
 ## Compiling CircuitPython
 
-The DS28E05 1-Wire EEPROM used on the MMv3.1 and before operates at overdrive speeds only. Adding support involves compiling a patched version of CircuitPython.
+The DS28E05 1-Wire EEPROM operates at overdrive speeds only. Adding support involves compiling a patched version of CircuitPython.
 
 1. Follow these [instructions](https://learn.adafruit.com/building-circuitpython/introduction) to get your system set up for compilation.
 2. Follow these [instructions](https://learn.adafruit.com/building-circuitpython/build-circuitpython) to clone CircuitPython and do further setup but don't compile CircuitPython just yet.

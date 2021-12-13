@@ -18,4 +18,6 @@ TODO check that a reverse bias detector actually works better in terms of linear
 
 ## Calibration (WIP)
 
+Make a script for this to automate process. Either print out constants to use or store them in EEPROM. Should also have some standard of performance bc it'll make future labs easier.
+
 ### Checkoff #3
