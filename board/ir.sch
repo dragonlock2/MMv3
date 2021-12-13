@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 4
+Sheet 2 4
 Title ""
 Date ""
 Rev ""
@@ -16,32 +16,32 @@ $EndDescr
 $Comp
 L Device:D_Photo_ALT D?
 U 1 1 60F47371
-P 6350 3900
+P 6350 4000
 AR Path="/60F47371" Ref="D?"  Part="1" 
 AR Path="/60F3A827/60F47371" Ref="D5"  Part="1" 
 AR Path="/60F5AA2F/60F47371" Ref="D9"  Part="1" 
 AR Path="/60F5D694/60F47371" Ref="D13"  Part="1" 
-F 0 "D13" V 6300 3850 50  0000 R CNN
-F 1 "D_Photo_ALT" V 6255 3820 50  0001 R CNN
-F 2 "extraparts:LED_D3.0mm_RH_THT_IRBlack" H 6300 3900 50  0001 C CNN
-F 3 "~" H 6300 3900 50  0001 C CNN
-	1    6350 3900
-	0    -1   -1   0   
+F 0 "D5" V 6300 3950 50  0000 R CNN
+F 1 "D_Photo_ALT" V 6255 3920 50  0001 R CNN
+F 2 "extraparts:LED_D3.0mm_RH_THT_IRBlack" H 6300 4000 50  0001 C CNN
+F 3 "~" H 6300 4000 50  0001 C CNN
+	1    6350 4000
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:D_Photo_ALT D?
 U 1 1 60F47377
-P 6050 3900
+P 6050 4000
 AR Path="/60F47377" Ref="D?"  Part="1" 
 AR Path="/60F3A827/60F47377" Ref="D4"  Part="1" 
 AR Path="/60F5AA2F/60F47377" Ref="D8"  Part="1" 
 AR Path="/60F5D694/60F47377" Ref="D12"  Part="1" 
-F 0 "D12" V 6000 3850 50  0000 R CNN
-F 1 "D_Photo_ALT" V 5955 3820 50  0001 R CNN
-F 2 "extraparts:LED_D3.0mm_RH_THT_IRBlack" H 6000 3900 50  0001 C CNN
-F 3 "~" H 6000 3900 50  0001 C CNN
-	1    6050 3900
-	0    -1   -1   0   
+F 0 "D4" V 6000 3950 50  0000 R CNN
+F 1 "D_Photo_ALT" V 5955 3920 50  0001 R CNN
+F 2 "extraparts:LED_D3.0mm_RH_THT_IRBlack" H 6000 4000 50  0001 C CNN
+F 3 "~" H 6000 4000 50  0001 C CNN
+	1    6050 4000
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:LED D?
@@ -51,7 +51,7 @@ AR Path="/60F4737E" Ref="D?"  Part="1"
 AR Path="/60F3A827/60F4737E" Ref="D2"  Part="1" 
 AR Path="/60F5AA2F/60F4737E" Ref="D6"  Part="1" 
 AR Path="/60F5D694/60F4737E" Ref="D10"  Part="1" 
-F 0 "D10" V 5400 3900 50  0000 R CNN
+F 0 "D2" V 5400 3900 50  0000 R CNN
 F 1 "LED" V 5348 3832 50  0001 R CNN
 F 2 "extraparts:LED_D3.0mm_RH_THT_Clear" H 5400 3950 50  0001 C CNN
 F 3 "~" H 5400 3950 50  0001 C CNN
@@ -66,7 +66,7 @@ AR Path="/60F47384" Ref="D?"  Part="1"
 AR Path="/60F3A827/60F47384" Ref="D3"  Part="1" 
 AR Path="/60F5AA2F/60F47384" Ref="D7"  Part="1" 
 AR Path="/60F5D694/60F47384" Ref="D11"  Part="1" 
-F 0 "D11" V 5700 3900 50  0000 R CNN
+F 0 "D3" V 5700 3900 50  0000 R CNN
 F 1 "LED" V 5648 3832 50  0001 R CNN
 F 2 "extraparts:LED_D3.0mm_RH_THT_Clear" H 5700 3950 50  0001 C CNN
 F 3 "~" H 5700 3950 50  0001 C CNN
@@ -96,7 +96,7 @@ AR Path="/60F47390" Ref="R?"  Part="1"
 AR Path="/60F3A827/60F47390" Ref="R5"  Part="1" 
 AR Path="/60F5AA2F/60F47390" Ref="R7"  Part="1" 
 AR Path="/60F5D694/60F47390" Ref="R9"  Part="1" 
-F 0 "R9" H 5459 3696 50  0000 L CNN
+F 0 "R5" H 5459 3696 50  0000 L CNN
 F 1 "150" H 5459 3605 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" H 5400 3650 50  0001 C CNN
 F 3 "~" H 5400 3650 50  0001 C CNN
@@ -111,7 +111,7 @@ AR Path="/60F47396" Ref="R?"  Part="1"
 AR Path="/60F3A827/60F47396" Ref="R6"  Part="1" 
 AR Path="/60F5AA2F/60F47396" Ref="R8"  Part="1" 
 AR Path="/60F5D694/60F47396" Ref="R10"  Part="1" 
-F 0 "R10" H 5759 3696 50  0000 L CNN
+F 0 "R6" H 5759 3696 50  0000 L CNN
 F 1 "150" H 5759 3605 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" H 5700 3650 50  0001 C CNN
 F 3 "~" H 5700 3650 50  0001 C CNN
@@ -130,7 +130,7 @@ AR Path="/60F4739E" Ref="Q?"  Part="1"
 AR Path="/60F3A827/60F4739E" Ref="Q2"  Part="1" 
 AR Path="/60F5AA2F/60F4739E" Ref="Q3"  Part="1" 
 AR Path="/60F5D694/60F4739E" Ref="Q4"  Part="1" 
-F 0 "Q4" H 5654 4496 50  0000 L CNN
+F 0 "Q2" H 5654 4496 50  0000 L CNN
 F 1 "DMG2302U" H 5654 4405 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 5650 4375 50  0001 L CIN
 F 3 "http://www.diodes.com/assets/Datasheets/DMG2302U.pdf" H 5450 4450 50  0001 L CNN

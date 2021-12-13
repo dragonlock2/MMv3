@@ -27,5 +27,5 @@ This lab provides code to test all aspects of your mouse and identify any hardwa
     * **MacOS** - [SerialTools](https://apps.apple.com/us/app/serialtools/id611021963?mt=12) and [screen](https://en.wikipedia.org/wiki/GNU_Screen)
     * **Linux** - [screen](https://en.wikipedia.org/wiki/GNU_Screen)
 4. Follow the instructions printed to the serial monitor. You may have to press CTRL-C and CTRL-D to reset if you don't see anything.
-    * IR sensor readings should be under 55,000 without a surface in front of them and drop by over 30,000 with your hand right in front of them.
+    * IR sensor readings should be around 50,000-60,000 without a surface in front of them and under 4,000 with your hand right in front of them.
     * Encoders should be \~217 ticks per revolution.

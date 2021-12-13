@@ -4,7 +4,9 @@
 
 Use the latest `ibom.html`.
 
-Angle the IR sensors very slightly upward. Also place them on top.
+Angle the IR sensors very slightly upward enough so that sensor values don't drop by very much when placed on white surface. Also place them on top.
+
+Wheels should be pushed almost against the motor holder for max concentricity. Look sideways for a small gap.
 
 ## Sanity Check
 
