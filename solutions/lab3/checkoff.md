@@ -67,4 +67,7 @@ while True:
     time.sleep(0.05)
 ```
 
-## Checkoff #3 (WIP)
+## Checkoff #3
+
+1. Just check that they ran the code and have reasonable looking constants. The slope tends to be the same with a slight difference in offset. Around `a=0.03` and `b=-50` appear to be the average.
+2. This involves combining taking the sensor readings from the previous checkpoint and implementing the provided equation. Example solution is in [chk3_code.py](chk3_code.py).

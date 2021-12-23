@@ -57,11 +57,11 @@ while True:
 
 ### Checkoff #1
 
-1. Demonstrate your working sensors.
+1. Demonstrate one working sensor.
 
 ## Read All the Sensors
 
-In order to simplify the whole process of multiplexing and reading from multiple sensors, we wrote a library. Upload `irsensor.py` from [lab3/](../labs/lab3) to serve as the library. Read through `irsensor.py` to instantiate and use it and fill out the below TODOs to print out all sensor readings in real time.
+In order to simplify the whole process of multiplexing and reading from multiple sensors, we wrote a library. Upload `irsensor.py` from [sanity/](../labs/sanity) to serve as the library. Read through `irsensor.py` to instantiate and use it and fill out the below TODOs to print out all sensor readings in real time.
 
 ```python
 import board
@@ -85,10 +85,23 @@ while True:
 
 1. Demonstrate all of your working sensors.
 
-## Calibration (WIP)
+## Calibration
 
-Make a script for this to automate process. Either print out constants to use or store them in EEPROM. Should also have some standard of performance bc it'll make future labs easier.
+Let's try estimating actual distances from the sensor values. Empirically, the relationship is linear below around 60mm and rises sharply beyond that due to the angled sensors seeing above the wall. Based on maze cell size, we really only need accurate distances around 50mm for wall following and just binary wall detection beyond that.
 
-Ultimately, really only need accurate readings under 50mm for wall following. Everything else is pretty binary.
+<p align="center">
+    <img height="250px" src="imgs/ir_graph.png"/>
+    <br>
+    <a><b>IR Sensor Linear Region</b></a>
+</p>
+
+Load up [`code.py`](../labs/lab3/code.py) which contains code to automate finding the constants. You'll be using a maze wall and ruler to take readings at various distances. The code then uses least squares to fit a line to the points and prints out the constants at the end. The equation using these constants to convert sensor readings to distances can be expressed as follows.
+
+<p align="center">
+    <img src="https://render.githubusercontent.com/render/math?math=distance%3Da%5Ccdot%20sensor%2Bb">
+</p>
 
 ### Checkoff #3
+
+1. Run the calibration code and save the constants somewhere.
+2. Using the constants, write code to convert sensor values to distances.

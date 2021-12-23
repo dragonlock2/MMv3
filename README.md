@@ -19,7 +19,7 @@ Skeleton lab code, lab documents, and solutions are stored in [labs/](labs/), [d
 * [sanity](docs/sanity.md) - Hardware Check
 * [lab1](docs/lab1.md) - Assembly and CircuitPython Basics
 * [lab2](docs/lab2.md) - Encoders
-* [lab3](docs/lab3.md) - IR Sensors **(WIP)**
+* [lab3](docs/lab3.md) - IR Sensors
 * [lab4](docs/lab4.md) - Odometry and Motor Control
 * [lab5](docs/lab5.md) - Intro to PID
 * [lab6](docs/lab6.md) - More PID **(WIP)**

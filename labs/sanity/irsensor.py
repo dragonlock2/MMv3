@@ -6,7 +6,8 @@ class IRSensors():
     def __init__(self, 
         l_en, l_a, l_b, l_adc,
         c_en, c_a, c_b, c_adc,
-        r_en, r_a, r_b, r_adc
+        r_en, r_a, r_b, r_adc,
+        avg = 5
     ):
         # Setup IR LED enables
         self.l_en = digitalio.DigitalInOut(l_en)
@@ -39,18 +40,26 @@ class IRSensors():
         self.cir_a, self.cir_b = 0, 0
         self.rir_a, self.rir_b = 0, 0
 
+        self.avg = avg
+
     def scan(self):
         # Enable IR LEDs
         for p in [self.l_en, self.c_en, self.r_en]:
             p.value = True
 
+        # Reset all values to 0
+        self.lir_a, self.lir_b = 0, 0
+        self.cir_a, self.cir_b = 0, 0
+        self.rir_a, self.rir_b = 0, 0
+
         # Read 'a' channels
         for p in [self.l_a, self.c_a, self.r_a]:
             p.value = False
         time.sleep(0.001)
-        self.lir_a = self.l_adc.value
-        self.cir_a = self.c_adc.value
-        self.rir_a = self.r_adc.value
+        for _ in range(self.avg):
+            self.lir_a += self.l_adc.value
+            self.cir_a += self.c_adc.value
+            self.rir_a += self.r_adc.value
         for p in [self.l_a, self.c_a, self.r_a]:
             p.value = True
 
@@ -58,11 +67,17 @@ class IRSensors():
         for p in [self.l_b, self.c_b, self.r_b]:
             p.value = False
         time.sleep(0.001)
-        self.lir_b = self.l_adc.value
-        self.cir_b = self.c_adc.value
-        self.rir_b = self.r_adc.value
+        for _ in range(self.avg):
+            self.lir_b += self.l_adc.value
+            self.cir_b += self.c_adc.value
+            self.rir_b += self.r_adc.value
         for p in [self.l_b, self.c_b, self.r_b]:
             p.value = True
+
+        # Compute averages
+        self.lir_a, self.lir_b = self.lir_a / self.avg, self.lir_b / self.avg
+        self.cir_a, self.cir_b = self.cir_a / self.avg, self.cir_b / self.avg
+        self.rir_a, self.rir_b = self.rir_a / self.avg, self.rir_b / self.avg
         
         # Disable IR LEDs (save power)
         for p in [self.l_en, self.c_en, self.r_en]:
