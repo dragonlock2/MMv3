@@ -58,10 +58,21 @@ def reset_odometry():
 1. Demonstrate your working PID loop driving straight a set distance.
 2. Demonstrate your working PID loop turning in place by 90°.
 3. Demonstrate turning in place by 90° and then stopping for one second before turning another 90° and so on.
-4. Explain your implementation of your integral term? Did you account for integral windup?
+4. Explain your implementation of your integral term. Did you account for integral windup?
 
-## Wall Following (WIP)
+## Wall Following
 
-Blocked until IR sensors are determined. Take the calibrated distance measurements and use them to maintain a fixed distance from the wall. Doing this will involve changing the target delta over time.
+When we're driving in a maze, our mouse will always be slightly misaligned with reference to a wall. Despite driving perfectly straight, this slight error will eventually cause us to crash. By performing feedback control with our IR sensors, we can correct for any misalignment!
+
+In the interest of developing maze solving primitives in the future, you will implement a `forward()` function that will have the mouse drive forwards 180mm and stop. While driving forward, maintain a fixed 45mm distance from a wall on the left.
+
+Optimally, stable wall following means maintaining a 0° angle with respect to the wall. With just one sensor, it's impossible to determine the angle because multiple angles can correspond to the same sensed distance. Performing feedback control on just that sensor works, but it relies on the mouse moving a bit to correct for angular errors. With two sensors, we can determine the angle from the wall based on the difference between the sensors. Wall following could then be implemented as just setting the angle of the mouse based on the distance error and letting its forward motion correct for the distance error.
+
+To implement wall following, start by taking your distance measurement code from lab 3 and your linear and angular PID controllers from the previous checkoff. Conceptually, we want to change the definitions of `theta` and `theta_target` for the angular controller. Based on what was discussed previously, what are the new definitions of `theta` and `theta_target`?
+
+Don't worry about implementing a PID controller for this as a P controller is adequate. Tuning can be a bit tricky. We've found that `Kp_theta=0.01` and `Kp_ang=0.01` work pretty well. Our reference solution uses `Kp_theta` to scale the distance error to set `theta_target`. Since we assume the mouse drives pretty straight and isn't very misaligned, don't worry about tuning your controller to work well for large errors.
 
 ### Checkoff #3
+
+1. Demonstrate your wall following code by calling `forward()` once every second.
+2. How might you extend your code to drive straight in between two walls?

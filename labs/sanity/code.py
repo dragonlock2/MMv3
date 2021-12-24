@@ -1,6 +1,5 @@
 import board
 import time
-import supervisor
 
 import digitalio
 import neopixel
@@ -10,8 +9,6 @@ import pwmio
 from ds28e05  import DS28E05
 from irsensor import IRSensors
 import adafruit_motor.motor as motor
-
-supervisor.disable_autoreload()
 
 """ Peripherals """
 

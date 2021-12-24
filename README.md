@@ -22,7 +22,9 @@ Skeleton lab code, lab documents, and solutions are stored in [labs/](labs/), [d
 * [lab3](docs/lab3.md) - IR Sensors
 * [lab4](docs/lab4.md) - Odometry and Motor Control
 * [lab5](docs/lab5.md) - Intro to PID
-* [lab6](docs/lab6.md) - More PID **(WIP)**
+* [lab6](docs/lab6.md) - More PID
+* [lab7](docs/lab7.md) - Maze Solving Primitives **(WIP)**
+* lab8 - Flood Fill **(WIP)**
 
 ## Compiling CircuitPython
 

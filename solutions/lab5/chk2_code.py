@@ -1,6 +1,5 @@
 import board
 import time
-import supervisor
 from math import pi
 
 import digitalio
@@ -8,8 +7,6 @@ import neopixel
 import rotaryio
 import pwmio
 import adafruit_motor.motor as motor
-
-supervisor.disable_autoreload()
 
 """ Constants """
 
