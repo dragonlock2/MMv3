@@ -48,7 +48,13 @@
           "min_clearance": 0.19999999999999998
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -101,20 +107,27 @@
         "allow_microvias": false,
         "max_error": 0.005,
         "min_clearance": 0.0,
-        "min_copper_edge_clearance": 0.09999999999999999,
-        "min_hole_clearance": 0.25,
+        "min_copper_edge_clearance": 0.26,
+        "min_hole_clearance": 0.31,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
         "min_microvia_drill": 0.09999999999999999,
         "min_silk_clearance": 0.0,
         "min_through_hole_diameter": 0.254,
         "min_track_width": 0.15239999999999998,
-        "min_via_annular_width": 0.049999999999999996,
-        "min_via_diameter": 0.5588,
+        "min_via_annular_width": 0.15239999999999998,
+        "min_via_diameter": 0.508,
         "use_height_for_length_calcs": true
       },
-      "track_widths": [],
-      "via_dimensions": [],
+      "track_widths": [
+        0.0
+      ],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        }
+      ],
       "zones_allow_external_fillets": false,
       "zones_use_no_outline": true
     },
@@ -352,8 +365,8 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.16,
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
+        "via_diameter": 0.64,
+        "via_drill": 0.32,
         "wire_width": 6.0
       },
       {
@@ -396,8 +409,8 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.32,
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
+        "via_diameter": 0.64,
+        "via_drill": 0.32,
         "wire_width": 6.0
       }
     ],

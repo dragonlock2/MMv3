@@ -3,6 +3,9 @@
 *-backups
 *.kicad_prl
 
+gerber/
+gerber.zip
+
 # For PCBs designed using KiCad: http://www.kicad-pcb.org/
 # Format documentation: http://kicad-pcb.org/help/file-formats/
 
