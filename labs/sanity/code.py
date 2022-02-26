@@ -6,7 +6,7 @@ import neopixel
 import rotaryio
 import pwmio
 
-from ds28e05  import DS28E05
+# from ds28e05  import DS28E05
 from irsensor import IRSensors
 import adafruit_motor.motor as motor
 
@@ -22,7 +22,7 @@ but.pull = digitalio.Pull.UP
 rgb = neopixel.NeoPixel(board.GP4, 1)
 
 # extra stuffs
-eeprom = DS28E05(board.GP2)
+# eeprom = DS28E05(board.GP2)
 
 # IR sensors
 ir = IRSensors(
@@ -70,16 +70,16 @@ if __name__ == "__main__":
     rgb[0] = (1, 1, 1)
 
     # extra stuffs
-    if eeprom.devices:
-        print("Detected the following 1-Wire devices...")
-        for d in eeprom.devices:
-            print("\t", "".join("{:02x}".format(x) for x in d.rom))
+    # if eeprom.devices:
+    #     print("Detected the following 1-Wire devices...")
+    #     for d in eeprom.devices:
+    #         print("\t", "".join("{:02x}".format(x) for x in d.rom))
 
-        eeprom.write(0, 0, b'MMv3.1')
-        if not eeprom.read(0, 0, 6) == b'MMv3.1':
-            print("FAIL! EEPROM write mismatch!")
-    else:
-        print("FAIL! No 1-Wire devices detected!")
+    #     eeprom.write(0, 0, b'MMv3.1')
+    #     if not eeprom.read(0, 0, 6) == b'MMv3.1':
+    #         print("FAIL! EEPROM write mismatch!")
+    # else:
+    #     print("FAIL! No 1-Wire devices detected!")
 
     # IR sensors
     print("Scanning IR sensors! Press button to start and stop.")
